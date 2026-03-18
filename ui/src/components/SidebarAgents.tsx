@@ -10,7 +10,6 @@ import { heartbeatsApi } from "../api/heartbeats";
 import { queryKeys } from "../lib/queryKeys";
 import { cn, agentRouteRef, agentUrl } from "../lib/utils";
 import { AgentIcon } from "./AgentIconPicker";
-import { BudgetSidebarMarker } from "./BudgetSidebarMarker";
 import {
   Collapsible,
   CollapsibleContent,
@@ -88,7 +87,7 @@ export function SidebarAgents() {
                 open && "rotate-90"
               )}
             />
-            <span className="text-[10px] font-medium uppercase tracking-widest font-mono text-muted-foreground/60">
+            <span className="text-[11px] font-medium text-muted-foreground/50">
               Agents
             </span>
           </CollapsibleTrigger>
@@ -117,30 +116,23 @@ export function SidebarAgents() {
                   if (isMobile) setSidebarOpen(false);
                 }}
                 className={cn(
-                  "flex items-center gap-2.5 px-3 py-1.5 text-[13px] font-medium transition-colors",
+                  "flex items-center gap-2.5 px-3 py-1.5 rounded-lg text-[13px] font-medium transition-colors",
                   activeAgentId === agentRouteRef(agent)
                     ? "bg-accent text-foreground"
-                    : "text-foreground/80 hover:bg-accent/50 hover:text-foreground"
+                    : "text-foreground/70 hover:bg-accent/50 hover:text-foreground"
                 )}
               >
                 <AgentIcon icon={agent.icon} className="shrink-0 h-3.5 w-3.5 text-muted-foreground" />
                 <span className="flex-1 truncate">{agent.name}</span>
-                {(agent.pauseReason === "budget" || runCount > 0) && (
+                {runCount > 0 && (
                   <span className="ml-auto flex items-center gap-1.5 shrink-0">
-                    {agent.pauseReason === "budget" ? (
-                      <BudgetSidebarMarker title="Agent paused by budget" />
-                    ) : null}
-                    {runCount > 0 ? (
-                      <span className="relative flex h-2 w-2">
-                        <span className="animate-pulse absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75" />
-                        <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500" />
-                      </span>
-                    ) : null}
-                    {runCount > 0 ? (
-                      <span className="text-[11px] font-medium text-blue-600 dark:text-blue-400">
-                        {runCount} live
-                      </span>
-                    ) : null}
+                    <span className="relative flex h-2 w-2">
+                      <span className="animate-pulse absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75" />
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500" />
+                    </span>
+                    <span className="text-[11px] font-medium text-blue-600 dark:text-blue-400">
+                      {runCount} live
+                    </span>
                   </span>
                 )}
               </NavLink>

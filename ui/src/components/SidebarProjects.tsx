@@ -20,7 +20,6 @@ import { projectsApi } from "../api/projects";
 import { queryKeys } from "../lib/queryKeys";
 import { cn, projectRouteRef } from "../lib/utils";
 import { useProjectOrder } from "../hooks/useProjectOrder";
-import { BudgetSidebarMarker } from "./BudgetSidebarMarker";
 import {
   Collapsible,
   CollapsibleContent,
@@ -78,10 +77,10 @@ function SortableProjectItem({
             if (isMobile) setSidebarOpen(false);
           }}
           className={cn(
-            "flex items-center gap-2.5 px-3 py-1.5 text-[13px] font-medium transition-colors",
+            "flex items-center gap-2.5 px-3 py-1.5 rounded-lg text-[13px] font-medium transition-colors",
             activeProjectRef === routeRef || activeProjectRef === project.id
               ? "bg-accent text-foreground"
-              : "text-foreground/80 hover:bg-accent/50 hover:text-foreground",
+              : "text-foreground/70 hover:bg-accent/50 hover:text-foreground",
           )}
         >
           <span
@@ -89,7 +88,6 @@ function SortableProjectItem({
             style={{ backgroundColor: project.color ?? "#6366f1" }}
           />
           <span className="flex-1 truncate">{project.name}</span>
-          {project.pauseReason === "budget" ? <BudgetSidebarMarker title="Project paused by budget" /> : null}
         </NavLink>
         {projectSidebarSlots.length > 0 && (
           <div className="ml-5 flex flex-col gap-0.5">
@@ -184,7 +182,7 @@ export function SidebarProjects() {
                 open && "rotate-90"
               )}
             />
-            <span className="text-[10px] font-medium uppercase tracking-widest font-mono text-muted-foreground/60">
+            <span className="text-[11px] font-medium text-muted-foreground/50">
               Projects
             </span>
           </CollapsibleTrigger>

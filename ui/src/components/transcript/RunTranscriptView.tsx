@@ -596,7 +596,7 @@ function TranscriptToolCard({
         : "text-emerald-700 dark:text-emerald-300";
   const detailsClass = cn(
     "space-y-3",
-    block.status === "error" && "rounded-xl border border-red-500/20 bg-red-500/[0.06] p-3",
+    block.status === "error" && "",
   );
   const iconClass = cn(
     "mt-0.5 h-3.5 w-3.5 shrink-0",
@@ -613,7 +613,7 @@ function TranscriptToolCard({
       : summarizeToolResult(block.result, block.isError, density);
 
   return (
-    <div className={cn(block.status === "error" && "rounded-xl border border-red-500/20 bg-red-500/[0.04] p-3")}>
+    <div className={cn(block.status === "error" && "")}>
       <div className="flex items-start gap-2">
         {block.status === "error" ? (
           <CircleAlert className={iconClass} />
@@ -707,7 +707,7 @@ function TranscriptCommandGroup({
       : "text-foreground/70";
 
   return (
-    <div className={cn(showExpandedErrorState && "rounded-xl border border-red-500/20 bg-red-500/[0.04] p-3")}>
+    <div className={cn(showExpandedErrorState && "")}>
       <div
         role="button"
         tabIndex={0}
@@ -771,7 +771,7 @@ function TranscriptCommandGroup({
         </button>
       </div>
       {open && (
-        <div className={cn("mt-3 space-y-3", hasError && "rounded-xl border border-red-500/20 bg-red-500/[0.06] p-3")}>
+        <div className={cn("mt-3 space-y-3", hasError && "")}>
           {block.items.map((item, index) => (
             <div key={`${item.ts}-${index}`} className="space-y-2">
               <div className="flex items-center gap-2">
@@ -842,7 +842,7 @@ function TranscriptEventRow({
   const compact = density === "compact";
   const toneClasses =
     block.tone === "error"
-      ? "rounded-xl border border-red-500/20 bg-red-500/[0.06] p-3 text-red-700 dark:text-red-300"
+      ? "text-red-700 dark:text-red-300"
       : block.tone === "warn"
         ? "text-amber-700 dark:text-amber-300"
         : block.tone === "info"

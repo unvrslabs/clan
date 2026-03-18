@@ -220,7 +220,7 @@ export function PluginSettings() {
                       slot={slot}
                       context={{
                         companyId: selectedCompanyId,
-                        companyPrefix: companyPrefix ?? null,
+                        companyPrefix: companyPrefix ?? selectedCompany?.issuePrefix ?? null,
                       }}
                       missingBehavior="placeholder"
                     />

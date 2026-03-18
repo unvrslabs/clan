@@ -38,13 +38,13 @@
   --color-sidebar-ring: var(--sidebar-ring);
   --radius-sm: 0.375rem;
   --radius-md: 0.5rem;
-  --radius-lg: 0px;
-  --radius-xl: 0px;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
 }
 
 :root {
   color-scheme: light;
-  --radius: 0;
+  --radius: 0.75rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -80,38 +80,38 @@
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.985 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
+  --background: hsl(220 15% 5%);
+  --foreground: oklch(0.96 0.005 260);
+  --card: oklch(0.95 0.01 260 / 0.08);
+  --card-foreground: oklch(0.96 0.005 260);
+  --popover: oklch(0.95 0.01 260 / 0.10);
+  --popover-foreground: oklch(0.96 0.005 260);
+  --primary: oklch(0.96 0.005 260);
+  --primary-foreground: oklch(0.12 0.02 260);
+  --secondary: oklch(0.95 0.01 260 / 0.12);
+  --secondary-foreground: oklch(0.96 0.005 260);
+  --muted: oklch(0.95 0.01 260 / 0.08);
+  --muted-foreground: oklch(0.65 0.01 260);
+  --accent: oklch(0.95 0.01 260 / 0.14);
+  --accent-foreground: oklch(0.96 0.005 260);
   --destructive: oklch(0.637 0.237 25.331);
-  --destructive-foreground: oklch(0.985 0 0);
-  --border: oklch(0.269 0 0);
-  --input: oklch(0.269 0 0);
-  --ring: oklch(0.439 0 0);
+  --destructive-foreground: oklch(0.96 0.005 260);
+  --border: oklch(0.95 0.02 260 / 0.22);
+  --input: oklch(0.95 0.02 260 / 0.22);
+  --ring: oklch(0.60 0.18 260);
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.145 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(0.269 0 0);
-  --sidebar-ring: oklch(0.439 0 0);
+  --sidebar: oklch(0.06 0.02 260);
+  --sidebar-foreground: oklch(0.96 0.005 260);
+  --sidebar-primary: oklch(0.65 0.22 260);
+  --sidebar-primary-foreground: oklch(0.96 0.005 260);
+  --sidebar-accent: oklch(0.95 0.02 260 / 0.14);
+  --sidebar-accent-foreground: oklch(0.96 0.005 260);
+  --sidebar-border: oklch(0.95 0.02 260 / 0.18);
+  --sidebar-ring: oklch(0.60 0.18 260);
 }
 
 @layer base {
@@ -126,6 +126,9 @@
     @apply bg-background text-foreground antialiased;
     height: 100%;
     overflow: hidden;
+  }
+  .dark body {
+    background: hsl(220 15% 5%);
   }
   h1,
   h2,
@@ -155,45 +158,17 @@
   }
 }
 
-/* Dark mode scrollbars */
+/* Dark mode scrollbars — hidden but scrollable */
 .dark {
   color-scheme: dark;
 }
 
+.dark * {
+  scrollbar-width: none; /* Firefox */
+}
+
 .dark *::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-.dark *::-webkit-scrollbar-track {
-  background: oklch(0.205 0 0);
-}
-
-.dark *::-webkit-scrollbar-thumb {
-  background: oklch(0.4 0 0);
-  border-radius: 4px;
-}
-
-.dark *::-webkit-scrollbar-thumb:hover {
-  background: oklch(0.5 0 0);
-}
-
-/* Auto-hide scrollbar: fully invisible by default, visible on container hover */
-.scrollbar-auto-hide::-webkit-scrollbar-track {
-  background: transparent !important;
-}
-.scrollbar-auto-hide::-webkit-scrollbar-thumb {
-  background: transparent !important;
-  transition: background 150ms ease;
-}
-.scrollbar-auto-hide:hover::-webkit-scrollbar-track {
-  background: oklch(0.205 0 0) !important;
-}
-.scrollbar-auto-hide:hover::-webkit-scrollbar-thumb {
-  background: oklch(0.4 0 0) !important;
-}
-.scrollbar-auto-hide:hover::-webkit-scrollbar-thumb:hover {
-  background: oklch(0.5 0 0) !important;
+  display: none; /* Chrome, Safari, Edge */
 }
 
 /* Expandable dialog transition for max-width changes */
@@ -377,21 +352,21 @@
 }
 
 .paperclip-mdxeditor-content h1 {
-  margin: 1.4em 0 0.9em;
+  margin: 0 0 0.9em;
   font-size: 1.75em;
   font-weight: 700;
   line-height: 1.2;
 }
 
 .paperclip-mdxeditor-content h2 {
-  margin: 1.3em 0 0.85em;
+  margin: 0 0 0.85em;
   font-size: 1.35em;
   font-weight: 700;
   line-height: 1.3;
 }
 
 .paperclip-mdxeditor-content h3 {
-  margin: 1.2em 0 0.8em;
+  margin: 0 0 0.8em;
   font-size: 1.15em;
   font-weight: 600;
   line-height: 1.35;
@@ -412,118 +387,30 @@
 
 .paperclip-mdxeditor-content code {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  font-size: 0.78em;
+  font-size: 0.84em;
 }
 
 .paperclip-mdxeditor-content pre {
-  margin: 0.4rem 0;
-  padding: 0;
-  border: 1px solid color-mix(in oklab, var(--foreground) 12%, transparent);
+  margin: 0.5rem 0;
+  padding: 0.45rem 0.55rem;
+  border: 1px solid var(--border);
   border-radius: calc(var(--radius) - 3px);
-  background: #1e1e2e;
-  color: #cdd6f4;
+  background: color-mix(in oklab, var(--accent) 50%, transparent);
   overflow-x: auto;
-}
-
-/* Dark theme for CodeMirror code blocks inside the MDXEditor.
-   Overrides the default cm6-theme-basic-light that MDXEditor bundles. */
-.paperclip-mdxeditor .cm-editor {
-  background-color: #1e1e2e !important;
-  color: #cdd6f4 !important;
-  font-size: 0.78em;
-}
-
-.paperclip-mdxeditor .cm-gutters {
-  background-color: #181825 !important;
-  color: #585b70 !important;
-  border-right: 1px solid #313244 !important;
-}
-
-.paperclip-mdxeditor .cm-activeLineGutter {
-  background-color: #1e1e2e !important;
-}
-
-.paperclip-mdxeditor .cm-activeLine {
-  background-color: color-mix(in oklab, #cdd6f4 5%, transparent) !important;
-}
-
-.paperclip-mdxeditor .cm-cursor,
-.paperclip-mdxeditor .cm-dropCursor {
-  border-left-color: #cdd6f4 !important;
-}
-
-.paperclip-mdxeditor .cm-selectionBackground {
-  background-color: color-mix(in oklab, #89b4fa 25%, transparent) !important;
-}
-
-.paperclip-mdxeditor .cm-focused .cm-selectionBackground {
-  background-color: color-mix(in oklab, #89b4fa 30%, transparent) !important;
-}
-
-.paperclip-mdxeditor .cm-content {
-  caret-color: #cdd6f4;
-}
-
-/* MDXEditor code block language selector – show on hover only */
-.paperclip-mdxeditor-content [class*="_codeMirrorWrapper_"] {
-  position: relative;
-}
-
-.paperclip-mdxeditor-content [class*="_codeMirrorToolbar_"],
-.paperclip-mdxeditor-content [class*="_codeBlockToolbar_"] {
-  position: absolute;
-  top: 0.25rem;
-  right: 0.25rem;
-  z-index: 2;
-  opacity: 0;
-  transition: opacity 150ms ease;
-}
-
-.paperclip-mdxeditor-content [class*="_codeMirrorToolbar_"] select,
-.paperclip-mdxeditor-content [class*="_codeBlockToolbar_"] select {
-  background-color: #313244;
-  color: #cdd6f4;
-  border-color: #45475a;
-}
-
-.paperclip-mdxeditor-content [class*="_codeMirrorWrapper_"]:hover [class*="_codeMirrorToolbar_"],
-.paperclip-mdxeditor-content [class*="_codeMirrorWrapper_"]:hover [class*="_codeBlockToolbar_"],
-.paperclip-mdxeditor-content [class*="_codeMirrorWrapper_"]:focus-within [class*="_codeMirrorToolbar_"],
-.paperclip-mdxeditor-content [class*="_codeMirrorWrapper_"]:focus-within [class*="_codeBlockToolbar_"] {
-  opacity: 1;
 }
 
 /* Rendered markdown code blocks & inline code (prose/MarkdownBody context).
-   Dark theme code blocks with compact sizing.
-   Override prose CSS variables so prose-invert can't revert to defaults. */
-.paperclip-markdown {
-  --tw-prose-pre-bg: #1e1e2e;
-  --tw-prose-pre-code: #cdd6f4;
-  --tw-prose-invert-pre-bg: #1e1e2e;
-  --tw-prose-invert-pre-code: #cdd6f4;
+   Matches the editor theme so rendered code looks consistent. */
+.prose pre {
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) - 3px);
+  background-color: color-mix(in oklab, var(--accent) 50%, transparent);
+  color: var(--foreground);
 }
 
-.paperclip-markdown pre {
-  border: 1px solid color-mix(in oklab, var(--foreground) 12%, transparent) !important;
-  border-radius: calc(var(--radius) - 3px) !important;
-  background-color: #1e1e2e !important;
-  color: #cdd6f4 !important;
-  padding: 0.5rem 0.65rem !important;
-  margin: 0.4rem 0 !important;
-  font-size: 0.78em !important;
-  overflow-x: auto;
-  white-space: pre;
-}
-
-.paperclip-markdown code {
+.prose code {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  font-size: 0.78em;
-}
-
-.paperclip-markdown pre code {
-  font-size: inherit;
-  color: inherit;
-  background: none;
+  font-size: 0.84em;
 }
 
 /* Remove backtick pseudo-elements from inline code (prose default adds them) */
@@ -585,11 +472,8 @@
   color: var(--muted-foreground);
 }
 
-.paperclip-markdown h1,
-.paperclip-markdown h2,
-.paperclip-markdown h3,
-.paperclip-markdown h4 {
-  margin-top: 1.75rem;
+.paperclip-markdown :where(h1, h2, h3, h4) {
+  margin-top: 1.15rem;
   margin-bottom: 0.45rem;
   color: var(--foreground);
   font-weight: 600;
@@ -706,6 +590,235 @@ a.paperclip-project-mention-chip {
   text-decoration: none;
   vertical-align: baseline;
   white-space: nowrap;
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   Liquid Glass Design System — matching boss.unvrslabs.dev
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* --- Glass Card --- */
+.dark .glass-card {
+  position: relative;
+  backdrop-filter: blur(40px) saturate(1.3);
+  -webkit-backdrop-filter: blur(40px) saturate(1.3);
+  background: rgba(255, 255, 255, 0.06);
+  border: 0.5px solid rgba(255, 255, 255, 0.15);
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow:
+    0 8px 32px hsla(0, 0%, 0%, 0.3),
+    0 2px 8px hsla(0, 0%, 0%, 0.2),
+    inset 0 1px 0 0 hsla(0, 0%, 100%, 0.15),
+    inset 0 -1px 0 0 hsla(0, 0%, 100%, 0.05);
+}
+
+/* --- Schema Card Style (exact from 21st.dev bundle) --- */
+.card-border {
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  background: #4f46e514;
+  border: 1px solid #4f46e54d;
+  box-shadow:
+    0 0 0 1px #4f46e54d,
+    inset 0 0 30px #4f46e51a,
+    inset 0 0 60px #3b82f60d;
+}
+
+.card-border-light {
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: none;
+}
+
+.glass {
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  background: #ffffff0d;
+}
+
+.gradient-border {
+  background: linear-gradient(135deg, #4f46e51a, #3b82f61a, #8b5cf61a);
+  position: relative;
+}
+
+.gradient-border::before {
+  content: "";
+  border-radius: inherit;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  background: linear-gradient(135deg, #4f46e5, #3b82f6, #8b5cf6, #f59e0b);
+  padding: 2px;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.inner-glow {
+  box-shadow:
+    inset 0 0 20px #4f46e54d,
+    inset 0 0 40px #3b82f633,
+    0 0 30px #8b5cf666;
+}
+
+.animate-float {
+  animation: 6s ease-in-out infinite float;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes dataStream {
+  0% { stroke-dashoffset: 20; }
+  100% { stroke-dashoffset: 0; }
+}
+
+@keyframes schemaPulse {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.02); opacity: 1; }
+}
+
+/* --- Glass Surface — sidebar, top bar --- */
+.dark .glass-surface {
+  backdrop-filter: blur(40px) saturate(1.3);
+  -webkit-backdrop-filter: blur(40px) saturate(1.3);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.02) 50%,
+    rgba(255, 255, 255, 0.06) 100%
+  );
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    0 2px 8px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.4),
+    inset 0 -1px 0 0 rgba(255, 255, 255, 0.1);
+}
+
+/* --- Glass Input --- */
+.dark .glass-input {
+  backdrop-filter: blur(24px) saturate(1.15);
+  -webkit-backdrop-filter: blur(24px) saturate(1.15);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.02) 100%
+  );
+  border-color: rgba(255, 255, 255, 0.15);
+  border-radius: 18px;
+  box-shadow:
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.15),
+    inset 0 -0.5px 0 0 rgba(255, 255, 255, 0.05);
+}
+
+/* --- Glass Overlay — modals, dropdowns, popovers --- */
+.dark .glass-overlay {
+  backdrop-filter: blur(40px) saturate(1.3);
+  -webkit-backdrop-filter: blur(40px) saturate(1.3);
+  background: rgba(0, 0, 0, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 22px;
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 2px 8px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.4),
+    inset 0 -1px 0 0 rgba(255, 255, 255, 0.1);
+}
+
+/* --- Glass Button --- */
+.dark .glass-button {
+  backdrop-filter: blur(20px) saturate(1.2) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(1.2) !important;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.2) 0%,
+    rgba(255, 255, 255, 0.08) 100%
+  ) !important;
+  border: 0.5px solid rgba(255, 255, 255, 0.35) !important;
+  border-radius: 14px !important;
+  box-shadow:
+    inset 0 0.5px 0 0 rgba(255, 255, 255, 0.4),
+    inset 0 -0.5px 0 0 rgba(255, 255, 255, 0.1),
+    0 2px 8px rgba(0, 0, 0, 0.15) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dark .glass-button:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.28) 0%,
+    rgba(255, 255, 255, 0.12) 100%
+  ) !important;
+  border-color: rgba(255, 255, 255, 0.45) !important;
+  box-shadow:
+    inset 0 0.5px 0 0 rgba(255, 255, 255, 0.5),
+    0 4px 16px rgba(0, 0, 0, 0.25) !important;
+}
+
+.dark .glass-button:active {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.12) 0%,
+    rgba(255, 255, 255, 0.04) 100%
+  ) !important;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.2) !important;
+  transform: scale(0.97);
+}
+
+/* --- Glass Badge --- */
+.dark .glass-badge {
+  backdrop-filter: blur(20px) saturate(1.2);
+  -webkit-backdrop-filter: blur(20px) saturate(1.2);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.12) 0%,
+    rgba(255, 255, 255, 0.04) 100%
+  );
+  border: 0.5px solid rgba(255, 255, 255, 0.2);
+  border-radius: 100px;
+  box-shadow:
+    inset 0 0.5px 0 0 rgba(255, 255, 255, 0.3),
+    inset 0 -0.5px 0 0 rgba(255, 255, 255, 0.1);
+}
+
+/* --- Glass Tooltip --- */
+.dark .glass-tooltip {
+  backdrop-filter: blur(32px) saturate(1.25);
+  -webkit-backdrop-filter: blur(32px) saturate(1.25);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  border: 0.5px solid rgba(255, 255, 255, 0.25);
+  border-radius: 22px;
+  box-shadow:
+    inset 0 0.5px 0 0 rgba(255, 255, 255, 0.4),
+    inset 0 -0.5px 0 0 rgba(255, 255, 255, 0.1),
+    0 8px 32px rgba(0, 0, 0, 0.25),
+    0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* --- Glass Tab Active --- */
+.dark .glass-tab-active {
+  backdrop-filter: blur(20px) saturate(1.2);
+  -webkit-backdrop-filter: blur(20px) saturate(1.2);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  border: 0.5px solid rgba(255, 255, 255, 0.25);
+  box-shadow:
+    inset 0 0.5px 0 0 rgba(255, 255, 255, 0.4),
+    inset 0 -0.5px 0 0 rgba(255, 255, 255, 0.1);
 }
 
 /* Keep MDXEditor popups above app dialogs, even when they portal to <body>. */
